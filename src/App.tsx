@@ -40,7 +40,7 @@ export default function App() {
 
   useEffect(() => {
     fetchImages();
-    const interval = setInterval(fetchImages, 3000); // 3초마다 갱신
+    const interval = setInterval(fetchImages, 5000); // 3초마다 갱신
     return () => clearInterval(interval);
   }, []);
 
