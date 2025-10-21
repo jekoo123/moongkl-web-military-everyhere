@@ -18,7 +18,7 @@ export default function App() {
   const fetchImages = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/images`);
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/images_v2`);
       if (!res.ok) throw new Error("이미지 조회 실패");
 
       const data = await res.json();
@@ -29,7 +29,7 @@ export default function App() {
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
       setImages(sorted);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error(err);
       alert(err.message || "이미지 불러오기 실패");
@@ -59,14 +59,22 @@ export default function App() {
         <div style={styles.fixedHeaderInner}>
           {/* 로고 */}
           <div style={styles.logoRow}>
-            <img src="/assets/logo1.jpg" alt="logo1" style={styles.logo1} />
-            <img src="/assets/logo2.jpg" alt="logo2" style={styles.logo2} />
+            <img
+              src={`${import.meta.env.BASE_URL}assets/logo1.jpg`}
+              alt="logo1"
+              style={styles.logo1}
+            />
+            <img
+              src={`${import.meta.env.BASE_URL}assets/logo2.jpg`}
+              alt="logo2"
+              style={styles.logo2}
+            />
           </div>
 
           {/* 글귀 박스 */}
           <div style={styles.quoteBox}>
             <div style={styles.quoteText}>
-              이곳에서 &apos;뭉클Here&apos;로 전하신{" "}
+              이곳에서 전하신{" "}
               <span style={{ color: "#FF6121" }}>응원메세지</span>
               입니다
               <br />
